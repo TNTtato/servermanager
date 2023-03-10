@@ -11,8 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Map;
+
+import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 
 @RestController
 @RequestMapping("/server")
@@ -85,5 +89,10 @@ public class ServerController {
                         .statusCode(HttpStatus.NO_CONTENT.value())
                         .build()
         );
+    }
+
+    @GetMapping(path = "/image/{fileName}", produces = IMAGE_PNG_VALUE)
+    public byte[] getServerImage(@PathVariable("fileName") String fileName) throws IOException {
+        return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "/repos/servermanager/imgs/" + fileName));
     }
 }
