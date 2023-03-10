@@ -10,4 +10,5 @@ public interface ServerService {
     Server get(Long id);
     Server update(Server server);
     Boolean delete(Long id);
+    Server ping(String ipAddress);
 }
