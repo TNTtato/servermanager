@@ -60,4 +60,30 @@ public class ServerController {
                         .build()
         );
     }
+
+    @GetMapping("{id}")
+    public ResponseEntity<Response> getServer(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(LocalDateTime.now())
+                        .data(Map.of("servers", serverService.get(id)))
+                        .message("Server retrieved")
+                        .status(HttpStatus.OK)
+                        .statusCode(HttpStatus.OK.value())
+                        .build()
+        );
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Response> deleteServer(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                Response.builder()
+                        .timeStamp(LocalDateTime.now())
+                        .data(Map.of("deleted", serverService.delete(id)))
+                        .message("Server deleted")
+                        .status(HttpStatus.NO_CONTENT)
+                        .statusCode(HttpStatus.NO_CONTENT.value())
+                        .build()
+        );
+    }
 }
