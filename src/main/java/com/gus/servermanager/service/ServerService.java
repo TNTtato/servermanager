@@ -2,6 +2,8 @@ package com.gus.servermanager.service;
 
 import com.gus.servermanager.domain.Server;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
 import java.util.Collection;
 
 public interface ServerService {
@@ -10,5 +12,5 @@ public interface ServerService {
     Server get(Long id);
     Server update(Server server);
     Boolean delete(Long id);
-    Server ping(String ipAddress);
+    Server ping(String ipAddress) throws IOException;
 }
