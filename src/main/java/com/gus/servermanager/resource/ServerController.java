@@ -44,7 +44,7 @@ public class ServerController {
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(LocalDateTime.now())
-                        .data(Map.of("servers", server))
+                        .data(Map.of("server", server))
                         .message(server.getStatus() == Status.SERVER_UP ? "Ping success" : "Ping Failure")
                         .status(HttpStatus.OK)
                         .statusCode(HttpStatus.OK.value())
